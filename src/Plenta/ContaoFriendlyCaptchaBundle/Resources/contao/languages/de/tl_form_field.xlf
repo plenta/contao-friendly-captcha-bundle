@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+    <file>
+        <body>
+            <trans-unit id="tl_form_field.plenta_fc_sitekey.0">
+                <target>FriendlyCaptcha Site Key</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_sitekey.1">
+                <target>Bitte geben Sie den FriendlyCaptcha Site Key ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_apikey.0">
+                <target>FriendlyCaptcha API Key</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_apikey.1">
+                <target>Bitte geben Sie den FriendlyCaptcha API Key ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_hf_name.0">
+                <target>Feldname</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_hf_name.1">
+                <target>Bitte geben Sie einen alternativen Namen für das versteckte Feld vom FriendlyCaptcha an. Lassen Sie das Feld leer, um den Standard-Feldnamen zu verwenden.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_callback_name.0">
+                <target>JavaScript Callback-Funktion</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_callback_name.1">
+                <target>Bitte geben Sie hier den Funktionsnamen der JavaScript-Callback-Funktion an.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_dark_mode.0">
+                <target>Dark Mode</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_dark_mode.1">
+                <target>Der Dark Mode wird verwendet.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_eu_endpoint.0">
+                <target>EU-Endpunkt verwenden</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_eu_endpoint.1">
+                <target>Der EU-Endpunkt der API wird verwendet (Premium-Feature von FriendlyCaptcha).</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_friendly_failure.0">
+                <target>Captcha wird bei Fehler akzeptiert</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_friendly_failure.1">
+                <target>Wenn beim Verifizieren des Captcha ein anderer Status-Code als 200 zurückgegeben wird, wird das Captcha dennoch akzeptiert.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

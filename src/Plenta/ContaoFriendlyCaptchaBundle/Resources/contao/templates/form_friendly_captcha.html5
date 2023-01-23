@@ -1,0 +1,10 @@
+<?php $this->extend('form_row'); ?>
+
+<?php $this->block('field'); ?>
+    <?php if ($this->hasErrors()): ?>
+        <p class="error"><?= $this->getErrorAsString() ?></p>
+    <?php endif; ?>
+
+    <div id="ctrl_<?= $this->id ?>" class="frc-captcha<?php if ($this->plenta_fc_dark_mode): ?> dark<?php endif; ?>" data-sitekey="<?= $this->friendlyCaptcha->getSiteKey() ?>" data-start="auto" data-lang="<?= $GLOBALS['TL_LANGUAGE'] ?>"<?php if (!empty($this->plenta_fc_hf_name)): ?> data-solution-field-name="<?= $this->plenta_fc_hf_name ?>"<?php endif; ?><?php if ($this->friendlyCaptcha->isEuEndpoint()): ?> data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle"<?php endif; ?><?php if ($this->plenta_fc_callback_name): ?> data-callback="<?= $this->plenta_fc_callback_name ?>"<?php endif; ?>></div>
+
+<?php $this->endblock(); ?>

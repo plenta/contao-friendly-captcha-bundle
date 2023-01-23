@@ -1,0 +1,50 @@
+{
+  "name": "plenta/contao-friendly-captcha-bundle",
+  "type": "contao-bundle",
+  "description": "Friendly Captcha Bundle for Contao",
+  "license": "LGPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Plenta.io",
+      "homepage": "https://plenta.io"
+    }
+  ],
+  "funding": [{
+    "type": "github",
+    "url": "https://github.com/sponsors/plenta"
+  }],
+  "support":{
+    "issues": "https://github.com/plenta/contao-friendly-captcha-bundle/issues",
+    "source": "https://github.com/plenta/contao-friendly-captcha-bundle"
+  },
+  "require": {
+    "php": "^8.1",
+    "contao/conflicts": "@dev",
+    "contao/core-bundle": "^4.13",
+    "codefog/contao-haste": "^4.25",
+    "symfony/http-client": "^5.4"
+  },
+  "require-dev": {
+    "contao/manager-bundle": "^4.13",
+    "phpunit/phpunit": "^9.5.10",
+    "contao/test-case": "^4.4.0",
+    "symfony/phpunit-bridge": "v5.3.8",
+    "friendsofphp/php-cs-fixer": "^3.2"
+  },
+  "extra": {
+    "contao-manager-plugin": "Plenta\\ContaoFriendlyCaptchaBundle\\ContaoManager\\Plugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "Plenta\\ContaoFriendlyCaptchaBundle\\": "src/Plenta/ContaoFriendlyCaptchaBundle"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true,
+      "contao-components/installer": true,
+      "contao/manager-plugin": true,
+      "contao-community-alliance/composer-plugin": true
+    }
+  }
+}
