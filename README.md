@@ -23,4 +23,4 @@ composer require plenta/contao-friendly-captcha-bundle
 ## System requirements
 
 - PHP: `^8.1`
-- Contao: `^5.3` (and later)
+- Contao: `^5.3 || ^5.7` (and later)
