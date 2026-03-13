@@ -20,14 +20,14 @@
   "require": {
     "php": "^8.1",
     "contao/conflicts": "@dev",
-    "contao/core-bundle": "^4.13",
-    "symfony/http-client": "^5.4"
+    "contao/core-bundle": "^5.3",
+    "symfony/http-client": "^6.4 || ^7.4"
   },
   "require-dev": {
     "contao/manager-bundle": "^4.13",
     "phpunit/phpunit": "^9.5.10",
-    "contao/test-case": "^4.4.0",
-    "symfony/phpunit-bridge": "v5.3.8",
+    "contao/test-case": "^5.0",
+    "symfony/phpunit-bridge": "v6.4.9",
     "friendsofphp/php-cs-fixer": "^3.2"
   },
   "extra": {
