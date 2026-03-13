@@ -14,9 +14,11 @@ namespace Plenta\ContaoFriendlyCaptchaBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * Configures the bundle.
- */
 class PlentaContaoFriendlyCaptchaBundle extends Bundle
 {
+    #[\Override]
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

@@ -24,7 +24,7 @@
     "symfony/http-client": "^6.4 || ^7.4"
   },
   "require-dev": {
-    "contao/manager-bundle": "^4.13",
+    "contao/manager-bundle": "^5.3",
     "phpunit/phpunit": "^9.5.10",
     "contao/test-case": "^5.0",
     "symfony/phpunit-bridge": "v6.4.9",
@@ -35,7 +35,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Plenta\\ContaoFriendlyCaptchaBundle\\": "src/Plenta/ContaoFriendlyCaptchaBundle"
+      "Plenta\\ContaoFriendlyCaptchaBundle\\": "src"
     }
   },
   "config": {

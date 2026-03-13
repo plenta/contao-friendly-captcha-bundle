@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @link          https://github.com/plenta/
  */
 
-namespace Plenta\ContaoFriendlyCaptchaBundle\Classes;
+namespace Plenta\ContaoFriendlyCaptchaBundle\Helper;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Asset\Packages;
@@ -31,19 +31,11 @@ class FriendlyCaptcha
     {
     }
 
-    /**
-     * @return string
-     */
     public function getApiKey(): string
     {
         return $this->apiKey;
     }
 
-    /**
-     * @param string $apiKey
-     *
-     * @return FriendlyCaptcha
-     */
     public function setApiKey(string $apiKey): self
     {
         $this->apiKey = $apiKey;
@@ -51,19 +43,11 @@ class FriendlyCaptcha
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSiteKey(): string
     {
         return $this->siteKey;
     }
 
-    /**
-     * @param string $siteKey
-     *
-     * @return FriendlyCaptcha
-     */
     public function setSiteKey(string $siteKey): self
     {
         $this->siteKey = $siteKey;
@@ -71,19 +55,11 @@ class FriendlyCaptcha
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isFriendlyFailure(): bool
     {
         return $this->friendlyFailure;
     }
 
-    /**
-     * @param bool $friendlyFailure
-     *
-     * @return FriendlyCaptcha
-     */
     public function setFriendlyFailure(bool $friendlyFailure): self
     {
         $this->friendlyFailure = $friendlyFailure;
@@ -91,19 +67,11 @@ class FriendlyCaptcha
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isEuEndpoint(): bool
     {
         return $this->euEndpoint;
     }
 
-    /**
-     * @param bool $euEndpoint
-     *
-     * @return FriendlyCaptcha
-     */
     public function setEuEndpoint(bool $euEndpoint): self
     {
         $this->euEndpoint = $euEndpoint;
@@ -113,8 +81,11 @@ class FriendlyCaptcha
 
     public function verifySolution($solution): bool
     {
+        // https://global.frcapi.com/api/v2/captcha/siteverify
+
         try {
-            $response = $this->httpClient->request('POST', $this->isEuEndpoint() ? 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify' : 'https://api.friendlycaptcha.com/api/v1/siteverify', [
+            //$response = $this->httpClient->request('POST', $this->isEuEndpoint() ? 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify' : 'https://api.friendlycaptcha.com/api/v1/siteverify', [
+            $response = $this->httpClient->request('POST', $this->isEuEndpoint() ? 'https://eu.frcapi.com/api/v2/captcha/siteverify' : 'https://global.frcapi.com/api/v2/captcha/siteverify', [
                 'body' => [
                     'solution' => $solution,
                     'secret' => $this->getApiKey(),
