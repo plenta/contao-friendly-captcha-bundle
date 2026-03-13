@@ -3,13 +3,13 @@
     <file>
         <body>
             <trans-unit id="FFL.friendly_captcha.0">
-                <target>FriendlyCaptcha - Sicherheitsfrage</target>
+                <target>FriendlyCaptcha - Security Question</target>
             </trans-unit>
             <trans-unit id="FFL.friendly_captcha.1">
-                <target>FriendlyCaptcha - Sicherheitsfrage</target>
+                <target>FriendlyCaptcha - Security Question</target>
             </trans-unit>
             <trans-unit id="ERR.plenta_fc_error">
-                <target>Die Verifizierung ist fehlgeschlagen.</target>
+                <target>The verification has failed.</target>
             </trans-unit>
         </body>
     </file>

@@ -21,6 +21,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class FriendlyCaptcha
 {
     protected array $errors = [];
+
     protected string $apiKey;
     protected string $siteKey;
     protected bool $friendlyFailure;
