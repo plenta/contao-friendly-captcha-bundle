@@ -1,10 +1,12 @@
 {
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.11.0",
+    "@friendlycaptcha/sdk": "^0.2.0",
     "@symfony/webpack-encore": "^1.7.0",
-    "friendly-challenge": "^0.9.9",
+    "friendly-challenge": "^0.9.19",
     "sass": "^1.55.0",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "@babel/runtime": "^7.28.6"
   },
   "scripts": {
     "dev-server": "encore dev-server",

@@ -52,12 +52,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['plenta_fc_friendly_failure'] = [
     'sql' => "char(1) NOT NULL default ''",
 ];
 
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['plenta_fc_dark_mode'] = [
-    'inputType' => 'checkbox',
-    'eval' => ['tl_class' => 'w50'],
-    'sql' => "char(1) NOT NULL default ''",
-];
-
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['plenta_fc_theme'] = [
     'inputType' => 'select',
     'options' => ['auto', 'light', 'dark'],

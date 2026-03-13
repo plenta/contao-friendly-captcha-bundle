@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "friendlyCaptchaV1": {
+      "js": [
+        "/bundles/plentacontaofriendlycaptcha/webpack/friendlyCaptchaV1.bdad6083.js"
+      ]
+    }
+  }
+}

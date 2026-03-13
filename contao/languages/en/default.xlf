@@ -3,10 +3,10 @@
     <file>
         <body>
             <trans-unit id="FFL.friendly_captcha.0">
-                <target>Friendly Captcha - Security Question</target>
+                <target>Friendly Captcha - Privacy-First Bot Protection</target>
             </trans-unit>
             <trans-unit id="FFL.friendly_captcha.1">
-                <target>Friendly Captcha - Security Question</target>
+                <target>Friendly Captcha - Privacy-First Bot Protection</target>
             </trans-unit>
             <trans-unit id="ERR.plenta_fc_error">
                 <target>The verification has failed.</target>

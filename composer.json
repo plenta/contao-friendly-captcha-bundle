@@ -43,7 +43,8 @@
       "composer/package-versions-deprecated": true,
       "contao-components/installer": true,
       "contao/manager-plugin": true,
-      "contao-community-alliance/composer-plugin": true
+      "contao-community-alliance/composer-plugin": true,
+      "php-http/discovery": true
     }
   }
 }

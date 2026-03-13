@@ -12,10 +12,13 @@ declare(strict_types=1);
 
 namespace Plenta\ContaoFriendlyCaptchaBundle\Helper;
 
+use AllowDynamicProperties;
 use Symfony\Component\Asset\Packages;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpClient\Exception\ClientException;
+use Plenta\ContaoFriendlyCaptchaBundle\Enum\FriendlyCaptchaVersion;
 
+#[AllowDynamicProperties]
 class FriendlyCaptcha
 {
     protected array $errors = [];
@@ -27,6 +30,8 @@ class FriendlyCaptcha
     protected bool $friendlyFailure;
 
     protected bool $euEndpoint;
+
+    protected FriendlyCaptchaVersion $apiVersion = FriendlyCaptchaVersion::V2;
 
     public function __construct(protected HttpClientInterface $httpClient, protected Packages $asset)
     {
@@ -80,28 +85,59 @@ class FriendlyCaptcha
         return $this;
     }
 
+    public function setApiVersion(FriendlyCaptchaVersion $version): self
+    {
+        $this->apiVersion = $version;
+
+        return $this;
+    }
+
+    public function getApiVersion(): FriendlyCaptchaVersion
+    {
+        return $this->apiVersion;
+    }
+
     public function verifySolution($solution): bool
     {
-        // https://global.frcapi.com/api/v2/captcha/siteverify
-
         try {
-            //$response = $this->httpClient->request('POST', $this->isEuEndpoint() ? 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify' : 'https://api.friendlycaptcha.com/api/v1/siteverify', [
-            $response = $this->httpClient->request('POST', $this->isEuEndpoint() ? 'https://eu.frcapi.com/api/v2/captcha/siteverify' : 'https://global.frcapi.com/api/v2/captcha/siteverify', [
-                'body' => [
-                    'solution' => $solution,
-                    'secret' => $this->getApiKey(),
-                    'sitekey' => $this->getSiteKey(),
-                ],
-            ]);
+            if ($this->apiVersion === FriendlyCaptchaVersion::V2) {
+                $options = [
+                    'headers' => [
+                        'X-API-Key' => $this->getApiKey(),
+                    ],
+                    'json' => [
+                        'response' => $solution,
+                        'sitekey' => $this->getSiteKey(),
+                    ],
+                ];
+
+            } else {
+                $options = [
+                    'body' => [
+                        'solution' => $solution,
+                        'secret' => $this->getApiKey(),
+                        'sitekey' => $this->getSiteKey(),
+                    ],
+                ];
+            }
+
+            $response = $this->httpClient->request(
+                'POST',
+                $this->getVerifyEndpoint(),
+                $options
+            );
+
             $data = json_decode($response->getContent(), true);
-            if (!$data['success']) {
-                $this->errors = $data['errors'];
+
+            if (!($data['success'] ?? false)) {
+                $this->errors = $data['errors'] ?? [];
             }
 
             return (bool) ($data['success'] ?? false);
+
         } catch (ClientException $e) {
             $data = json_decode($e->getResponse()->getContent(false), true);
-            $this->errors = $data['errors'];
+            $this->errors = $data['errors'] ?? [];
 
             return $this->isFriendlyFailure();
         }
@@ -118,5 +154,18 @@ class FriendlyCaptcha
             $url = $this->asset->getUrl('plentafriendlycaptcha/friendlyCaptcha.js', 'plentafriendlycaptcha');
             $GLOBALS['TL_BODY']['friendlyCaptchaJs'] = '<script src="/'.ltrim($url, '/').'" defer></script>';
         }
+    }
+
+    private function getVerifyEndpoint(): string
+    {
+        if ($this->apiVersion === FriendlyCaptchaVersion::V1) {
+            return $this->isEuEndpoint()
+                ? 'https://eu-api.friendlycaptcha.eu/api/v1/siteverify'
+                : 'https://api.friendlycaptcha.com/api/v1/siteverify';
+        }
+
+        return $this->isEuEndpoint()
+            ? 'https://eu.frcapi.com/api/v2/captcha/siteverify'
+            : 'https://global.frcapi.com/api/v2/captcha/siteverify';
     }
 }

@@ -26,12 +26,6 @@
             <trans-unit id="tl_form_field.plenta_fc_callback_name.1">
                 <target>Please enter the function name of the JavaScript callback function here.</target>
             </trans-unit>
-            <trans-unit id="tl_form_field.plenta_fc_dark_mode.0">
-                <target>Dark Mode</target>
-            </trans-unit>
-            <trans-unit id="tl_form_field.plenta_fc_dark_mode.1">
-                <target>Dark mode is enabled.</target>
-            </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_eu_endpoint.0">
                 <target>Use EU Endpoint</target>
             </trans-unit>

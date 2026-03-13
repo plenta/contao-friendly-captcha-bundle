@@ -13,9 +13,10 @@ declare(strict_types=1);
 namespace Plenta\ContaoFriendlyCaptchaBundle\Classes\Contao\Forms;
 
 use Contao\Input;
-use Contao\StringUtil;
-use Contao\System;
 use Contao\Widget;
+use Contao\StringUtil;
+use Contao\BackendTemplate;
+use Plenta\ContaoFriendlyCaptchaBundle\Enum\FriendlyCaptchaVersion;
 use Plenta\ContaoFriendlyCaptchaBundle\Helper\FriendlyCaptcha;
 
 class FormFriendlyCaptcha extends Widget
@@ -38,9 +39,14 @@ class FormFriendlyCaptcha extends Widget
         $this->arrConfiguration['mandatory'] = true;
         $this->fc_apikey = $this->plenta_fc_sitekey;
 
-        $this->friendlyCaptcha = System::getContainer()->get(FriendlyCaptcha::class);
+        //$this->arrAttributes['maxlength'][] = 'data-theme="'.StringUtil::specialchars($theme).'"';
+        //$attributes[] = 'data-theme="'.StringUtil::specialchars($theme).'"';
+        // plenta_fc_dark_mode
+
+        $this->friendlyCaptcha = $this->getContainer()->get(FriendlyCaptcha::class);
 
         $this->friendlyCaptcha
+            ->setApiVersion(FriendlyCaptchaVersion::tryFrom($this->plenta_fc_version))
             ->setApiKey($this->plenta_fc_apikey)
             ->setSiteKey($this->plenta_fc_sitekey)
             ->setFriendlyFailure((bool) $this->plenta_fc_friendly_failure)
@@ -52,10 +58,16 @@ class FormFriendlyCaptcha extends Widget
 
     public function validate(): void
     {
-        $container = System::getContainer();
-        $translator = $container->get('translator');
-        $logger = System::getContainer()->get('monolog.logger.contao.error');
-        $fieldName = empty($this->plenta_fc_hf_name) ? 'frc-captcha-solution' : $this->plenta_fc_hf_name;
+        $translator = $this->getContainer()->get('translator');
+        $logger = $this->getContainer()->get('monolog.logger.contao.error');
+
+        $version = FriendlyCaptchaVersion::tryFrom($this->plenta_fc_version) ?? FriendlyCaptchaVersion::V1;
+
+        if ($version === FriendlyCaptchaVersion::V2) {
+            $fieldName = 'frc-captcha-response';
+        } else {
+            $fieldName = empty($this->plenta_fc_hf_name) ? 'frc-captcha-solution' : $this->plenta_fc_hf_name;
+        }
 
         if (!$this->friendlyCaptcha->verifySolution(StringUtil::decodeEntities(Input::post($fieldName)))) {
             $this->class = 'error';
@@ -69,5 +81,20 @@ class FormFriendlyCaptcha extends Widget
 
     public function generate(): void
     {
+    }
+
+    public function parse($arrAttributes = null): string
+    {
+        $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && $this->getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request))
+        {
+            $template = new BackendTemplate('be_wildcard');
+            $template->title = $GLOBALS['TL_LANG']['FFL']['friendly_captcha'][0];
+
+            return $template->parse();
+        }
+
+        return parent::parse($arrAttributes);
     }
 }

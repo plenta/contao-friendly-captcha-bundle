@@ -3,10 +3,10 @@
     <file>
         <body>
             <trans-unit id="FFL.friendly_captcha.0">
-                <target>Friendly Captcha - Sicherheitsfrage</target>
+                <target>Friendly Captcha - DSGVO-konformer Bot-Schutz</target>
             </trans-unit>
             <trans-unit id="FFL.friendly_captcha.1">
-                <target>Friendly Captcha - Sicherheitsfrage</target>
+                <target>Friendly Captcha - DSGVO-konformer Bot-Schutz</target>
             </trans-unit>
             <trans-unit id="ERR.plenta_fc_error">
                 <target>Die Verifizierung ist fehlgeschlagen.</target>

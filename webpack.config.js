@@ -2,7 +2,7 @@ var Encore = require('@symfony/webpack-encore');
 var bundleName = 'PlentaContaoFriendlyCaptchaBundle';
 
 Encore
-    .setOutputPath('src/Plenta/ContaoFriendlyCaptchaBundle/Resources/public/webpack')
+    .setOutputPath('public/webpack')
     .setPublicPath('/bundles/plentacontaofriendlycaptcha/webpack')
     .setManifestKeyPrefix('plentafriendlycaptcha')
     .addExternals({
