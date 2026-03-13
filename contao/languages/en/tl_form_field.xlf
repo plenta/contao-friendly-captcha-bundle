@@ -3,22 +3,22 @@
     <file>
         <body>
             <trans-unit id="tl_form_field.plenta_fc_sitekey.0">
-                <target>FriendlyCaptcha Site Key</target>
+                <target>Friendly Captcha Site Key</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_sitekey.1">
-                <target>Please enter the FriendlyCaptcha Site Key.</target>
+                <target>Please enter the Friendly Captcha Site Key.</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_apikey.0">
-                <target>FriendlyCaptcha API Key</target>
+                <target>Friendly Captcha API Key</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_apikey.1">
-                <target>Please enter the FriendlyCaptcha API Key.</target>
+                <target>Please enter the Friendly Captcha API Key.</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_hf_name.0">
                 <target>Field Name</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_hf_name.1">
-                <target>Please enter an alternative name for the hidden FriendlyCaptcha field. Leave this field empty to use the default field name.</target>
+                <target>Please enter an alternative name for the hidden Friendly Captcha field. Leave this field empty to use the default field name.</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_callback_name.0">
                 <target>JavaScript Callback Function</target>
@@ -36,13 +36,34 @@
                 <target>Use EU Endpoint</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_eu_endpoint.1">
-                <target>The EU endpoint of the API will be used (premium feature of FriendlyCaptcha).</target>
+                <target>The EU endpoint of the API will be used (premium feature of Friendly Captcha).</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_friendly_failure.0">
                 <target>Accept Captcha on Failure</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_friendly_failure.1">
                 <target>If a status code other than 200 is returned during captcha verification, the captcha will still be accepted.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_theme.0">
+                <target>Widget Theme</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_theme.1">
+                <target>Customize the appearance of the widget to match your website or brand.</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_theme_options.auto">
+                <target>Use System Preference</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_theme_options.light">
+                <target>Light Mode</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_theme_options.dark">
+                <target>Dark Mode</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_version.0">
+                <target>Friendly Captcha Version</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_version.1">
+                <target>Select the Friendly Captcha version.</target>
             </trans-unit>
         </body>
     </file>

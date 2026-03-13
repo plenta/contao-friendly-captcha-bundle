@@ -4,5 +4,5 @@ services:
         autowire: true
         public: false
 
-    Plenta\ContaoFriendlyCaptchaBundle\Classes\FriendlyCaptcha:
+    Plenta\ContaoFriendlyCaptchaBundle\Helper\FriendlyCaptcha:
         public: true

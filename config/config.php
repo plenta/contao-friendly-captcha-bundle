@@ -18,7 +18,7 @@ $fileSystem = new Filesystem();
 $projectDir = $container->getParameter('kernel.project_dir');
 
 if ($fileSystem->exists($projectDir.'/web')) {
-    $webDir = 'web'; // backwards compatibility
+    $webDir = 'web';
 } else {
     $webDir = 'public';
 }

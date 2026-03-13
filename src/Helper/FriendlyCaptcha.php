@@ -12,19 +12,20 @@ declare(strict_types=1);
 
 namespace Plenta\ContaoFriendlyCaptchaBundle\Helper;
 
-use Psr\Log\LoggerInterface;
 use Symfony\Component\Asset\Packages;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpClient\Exception\ClientException;
 
 class FriendlyCaptcha
 {
     protected array $errors = [];
 
     protected string $apiKey;
+
     protected string $siteKey;
+
     protected bool $friendlyFailure;
+
     protected bool $euEndpoint;
 
     public function __construct(protected HttpClientInterface $httpClient, protected Packages $asset)
