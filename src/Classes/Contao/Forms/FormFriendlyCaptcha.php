@@ -33,23 +33,26 @@ class FormFriendlyCaptcha extends Widget
     {
         parent::__construct($arrAttributes);
 
-        $this->arrAttributes['maxlength'] = 32;
-        $this->strCaptchaKey = 'friendly_captcha_'.$this->strId;
-        $this->arrAttributes['required'] = true;
-        $this->arrConfiguration['mandatory'] = true;
-        $this->fc_apikey = $this->plenta_fc_sitekey;
+        $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
 
-        $this->friendlyCaptcha = $this->getContainer()->get(FriendlyCaptcha::class);
+        if ($request && $this->getContainer()->get('contao.routing.scope_matcher')->isFrontendRequest($request)) {
+            $this->arrAttributes['maxlength'] = 32;
+            $this->strCaptchaKey = 'friendly_captcha_' . $this->strId;
+            $this->arrAttributes['required'] = true;
+            $this->arrConfiguration['mandatory'] = true;
+            $this->fc_apikey = $this->plenta_fc_sitekey;
 
-        $this->friendlyCaptcha
-            ->setApiVersion(FriendlyCaptchaVersion::tryFrom($this->plenta_fc_version))
-            ->setApiKey($this->plenta_fc_apikey)
-            ->setSiteKey($this->plenta_fc_sitekey)
-            ->setFriendlyFailure((bool) $this->plenta_fc_friendly_failure)
-            ->setEuEndpoint((bool) $this->plenta_fc_eu_endpoint)
-        ;
+            $this->friendlyCaptcha = $this->getContainer()->get(FriendlyCaptcha::class);
 
-        $this->friendlyCaptcha->generateJs();
+            $this->friendlyCaptcha
+                ->setApiVersion(FriendlyCaptchaVersion::tryFrom($this->plenta_fc_version))
+                ->setApiKey($this->plenta_fc_apikey)
+                ->setSiteKey($this->plenta_fc_sitekey)
+                ->setFriendlyFailure((bool)$this->plenta_fc_friendly_failure)
+                ->setEuEndpoint((bool)$this->plenta_fc_eu_endpoint);
+
+            $this->friendlyCaptcha->generateJs();
+        }
     }
 
     public function validate(): void
