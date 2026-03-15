@@ -1,6 +1,6 @@
 # Contao Friendly Captcha Bundle
 
-![Contao](https://img.shields.io/badge/Contao-5.x-orange) ![Friendly Captcha v1 + v2 supported](https://img.shields.io/badge/FriendlyCaptcha-v1%20%7C%20v2-green)
+![Contao](https://img.shields.io/badge/Contao-5.x-orange) ![Friendly Captcha v1 + v2 supported](https://img.shields.io/badge/FriendlyCaptcha-v1%20%7C%20v2-green) ![Downloads](https://img.shields.io/packagist/dt/plenta/contao-friendly-captcha-bundle)
 
 Integrates **Friendly Captcha** into Contao forms to protect them from spam and automated submissions.
 
