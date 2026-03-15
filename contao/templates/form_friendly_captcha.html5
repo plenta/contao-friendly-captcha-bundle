@@ -4,11 +4,9 @@
     <?php if ($this->hasErrors()): ?>
         <p class="error"><?= $this->getErrorAsString() ?></p>
     <?php endif; ?>
-
     <?php if ('v1' == $this->plenta_fc_version): ?>
-        <div id="ctrl_<?= $this->id ?>" data-fc-version="v1" class="frc-captcha<?php if ($this->plenta_fc_dark_mode): ?> dark<?php endif; ?>" data-sitekey="<?= $this->friendlyCaptcha->getSiteKey() ?>" data-start="auto" data-lang="<?= $GLOBALS['TL_LANGUAGE'] ?>"<?php if (!empty($this->plenta_fc_hf_name)): ?> data-solution-field-name="<?= $this->plenta_fc_hf_name ?>"<?php endif; ?><?php if ($this->friendlyCaptcha->isEuEndpoint()): ?> data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle"<?php endif; ?><?php if ($this->plenta_fc_callback_name): ?> data-callback="<?= $this->plenta_fc_callback_name ?>"<?php endif; ?>></div>
+        <div id="ctrl_<?= $this->id ?>" data-fc-version="v1" class="frc-captcha<?= $this->getThemeClass() ?>" data-sitekey="<?= $this->friendlyCaptcha->getSiteKey() ?>"<?= $this->getPuzzleStart() ?><?= $this->getLocale() ?><?php if (!empty($this->plenta_fc_hf_name)): ?> data-solution-field-name="<?= $this->plenta_fc_hf_name ?>"<?php endif; ?><?php if ($this->friendlyCaptcha->isEuEndpoint()): ?> data-puzzle-endpoint="https://eu-api.friendlycaptcha.eu/api/v1/puzzle"<?php endif; ?><?php if ($this->plenta_fc_callback_name): ?> data-callback="<?= $this->plenta_fc_callback_name ?>"<?php endif; ?>></div>
     <?php else: ?>
-        <div id="ctrl_<?= $this->id ?>" data-fc-version="v2" class="frc-captcha" data-sitekey="<?= $this->friendlyCaptcha->getSiteKey() ?>" data-theme="auto" data-lang="<?= $GLOBALS['TL_LANGUAGE'] ?>"></div>
+        <div id="ctrl_<?= $this->id ?>" data-fc-version="v2" class="frc-captcha" data-sitekey="<?= $this->friendlyCaptcha->getSiteKey() ?>"<?= $this->getPuzzleStart() ?><?= $this->getThemeAttribute() ?><?= $this->getApiEndpoint() ?><?= $this->getLocale() ?>></div>
     <?php endif; ?>
-
 <?php $this->endblock(); ?>

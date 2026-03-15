@@ -39,10 +39,6 @@ class FormFriendlyCaptcha extends Widget
         $this->arrConfiguration['mandatory'] = true;
         $this->fc_apikey = $this->plenta_fc_sitekey;
 
-        //$this->arrAttributes['maxlength'][] = 'data-theme="'.StringUtil::specialchars($theme).'"';
-        //$attributes[] = 'data-theme="'.StringUtil::specialchars($theme).'"';
-        // plenta_fc_dark_mode
-
         $this->friendlyCaptcha = $this->getContainer()->get(FriendlyCaptcha::class);
 
         $this->friendlyCaptcha
@@ -96,5 +92,69 @@ class FormFriendlyCaptcha extends Widget
         }
 
         return parent::parse($arrAttributes);
+    }
+
+    public function getPuzzleStart(): string
+    {
+        $start = $this->plenta_fc_auto_start ? 'auto' : 'none';
+
+        return sprintf(' data-start="%s"', $start);
+    }
+
+    private function getVersion(): FriendlyCaptchaVersion
+    {
+        return FriendlyCaptchaVersion::tryFrom($this->plenta_fc_version) ?? FriendlyCaptchaVersion::V1;
+    }
+
+    public function getThemeClass(): string
+    {
+        if ($this->getVersion() !== FriendlyCaptchaVersion::V1) {
+            return '';
+        }
+
+        if ($this->plenta_fc_theme !== 'dark') {
+            return '';
+        }
+
+        return ' dark';
+    }
+
+    public function getThemeAttribute(): string
+    {
+        if ($this->getVersion() !== FriendlyCaptchaVersion::V2) {
+            return '';
+        }
+
+        $theme = $this->plenta_fc_theme ?? 'light';
+
+        return sprintf(' data-theme="%s"', $theme);
+    }
+
+    public function isV1(): bool
+    {
+        return $this->getVersion() === FriendlyCaptchaVersion::V1;
+    }
+
+    public function isV2(): bool
+    {
+        return $this->getVersion() === FriendlyCaptchaVersion::V2;
+    }
+
+    public function getApiEndpoint(): string
+    {
+        if (!$this->isV2()) {
+            return '';
+        }
+
+        $endpoint = $this->friendlyCaptcha->isEuEndpoint() ? 'eu' : 'global';
+
+        return sprintf(' data-api-endpoint="%s"', $endpoint);
+    }
+
+    public function getLocale(): string
+    {
+        $request = $this->getContainer()->get('request_stack')->getCurrentRequest();
+
+        return sprintf(' data-lang="%s"', $request->getLocale());
     }
 }

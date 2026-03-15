@@ -59,12 +59,17 @@
             <trans-unit id="tl_form_field.plenta_fc_version.1">
                 <target>Wähle die Friendly Captcha Version aus.</target>
             </trans-unit>
-
             <trans-unit id="tl_form_field.plenta_fc_version_options.v1">
                 <target>Captcha v1</target>
             </trans-unit>
             <trans-unit id="tl_form_field.plenta_fc_version_options.v2">
                 <target>Captcha v2</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_puzzle.0">
+                <target>Captcha automatisch starten</target>
+            </trans-unit>
+            <trans-unit id="tl_form_field.plenta_fc_puzzle.1">
+                <target>Startet das Captcha direkt beim Laden der Seite statt erst bei Interaktion mit dem Formular.</target>
             </trans-unit>
         </body>
     </file>
